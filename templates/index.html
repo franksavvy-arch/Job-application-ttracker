@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Job Application Tracker</h1>
+        </header>
+
+        <div class="application-form">
+            <h2>Add New Job Application</h2>
+            <form id="jobApplicationForm">
+                <input type="text" id="companyName" placeholder="Company Name" required>
+                <input type="text" id="jobTitle" placeholder="Job Title" required>
+                <select id="applicationStatus">
+                    <option value="Applied">Applied</option>
+                    <option value="In Review">In Review</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+                <input type="date" id="applicationDate" required>
+                <input type="url" id="jobLink" placeholder="Job Listing URL">
+                <textarea id="notes" placeholder="Additional Notes"></textarea>
+                <button type="submit">Add Application</button>
+            </form>
+        </div>
+
+        <div class="applications-list">
+            <h2>My Applications</h2>
+            <div class="filters">
+                <input type="text" id="searchInput" placeholder="Search applications...">
+                <select id="statusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="Applied">Applied</option>
+                    <option value="In Review">In Review</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+            </div>
+            <table id="applicationsTable">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Job Title</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="applicationsTableBody">
+                    <!-- Applications will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="visualization">
+            <h2>Application Progress</h2>
+            <canvas id="statusChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/script.js"></script>
+</body>
+</html>
