@@ -1,92 +1,334 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+/* Base Styles */
+:root {
+    --primary: #4361ee;
+    --primary-light: #4895ef;
+    --primary-dark: #3a0ca3;
+    --success: #4cc9f0;
+    --warning: #f72585;
+    --danger: #e63946;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --gray: #6c757d;
+    --gray-light: #e9ecef;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+  
+  * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-}
-
-.container {
-    width: 90%;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+  }
+  
+  .container {
+    width: 92%;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-header {
-    background-color: #333;
+    margin: 2rem auto;
+    padding: 0;
+  }
+  
+  /* Header Styles */
+  header {
+    background: linear-gradient(90deg, var(--primary-dark), var(--primary));
     color: white;
     text-align: center;
-    padding: 1rem;
-}
-
-.application-form {
+    padding: 2rem 1rem;
+    border-radius: 12px 12px 0 0;
+    box-shadow: var(--shadow);
+  }
+  
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 2.2rem;
+  }
+  
+  /* Card Styles */
+  .application-form,
+  .applications-list,
+  .visualization {
     background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-
-.application-form form {
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  
+  .application-form h2,
+  .applications-list h2,
+  .visualization h2 {
+    padding: 1.2rem;
+    background-color: var(--gray-light);
+    color: var(--dark);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  /* Form Styles */
+  .application-form form {
     display: grid;
-    gap: 10px;
-}
-
-.application-form input, 
-.application-form select, 
-.application-form textarea {
+    gap: 1rem;
+    padding: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .application-form textarea {
+    grid-column: 1 / -1;
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .application-form button {
+    grid-column: 1 / -1;
+    justify-self: end;
+    width: 200px;
+  }
+  
+  .application-form input,
+  .application-form select,
+  .application-form textarea,
+  .filters input,
+  .filters select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.applications-list {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.filters {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: var(--transition);
+  }
+  
+  .application-form input:focus,
+  .application-form select:focus,
+  .application-form textarea:focus,
+  .filters input:focus,
+  .filters select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+  }
+  
+  /* Applications List Styles */
+  .applications-list {
+    padding-bottom: 1rem;
+  }
+  
+  .filters {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-table {
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .filters input {
+    flex: 2;
+    min-width: 200px;
+  }
+  
+  .filters select {
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  table {
     width: 100%;
     border-collapse: collapse;
-}
-
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 10px;
+    font-size: 0.95rem;
+  }
+  
+  table th,
+  table td {
+    padding: 0.9rem 1.2rem;
     text-align: left;
-}
-
-table th {
-    background-color: #f2f2f2;
-}
-
-.visualization {
-    margin-top: 20px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-button {
-    background-color: #333;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  table th {
+    font-weight: 600;
+    color: var(--gray);
+    background-color: #f8f9fa;
+    white-space: nowrap;
+  }
+  
+  table tr:hover {
+    background-color: #f8f9fa;
+  }
+  
+  /* Status Badges */
+  .status-badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.85em;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 20px;
+  }
+  
+  .status-Applied {
+    background-color: #e9ecef;
+    color: var(--dark);
+  }
+  
+  .status-In-Review {
+    background-color: #cff4fc;
+    color: #055160;
+  }
+  
+  .status-Interview {
+    background-color: #fff3cd;
+    color: #664d03;
+  }
+  
+  .status-Offer {
+    background-color: #d1e7dd;
+    color: #0f5132;
+  }
+  
+  .status-Rejected {
+    background-color: #f8d7da;
+    color: #842029;
+  }
+  
+  /* Button Styles */
+  button {
+    background-color: var(--primary);
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #555;
-}
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: var(--transition);
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .action-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    margin-right: 5px;
+  }
+  
+  .edit-btn {
+    background-color: var(--success);
+  }
+  
+  .delete-btn {
+    background-color: var(--danger);
+  }
+  
+  .edit-btn:hover {
+    background-color: #3da5d9;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d90429;
+  }
+  
+  /* Visualization */
+  .visualization {
+    padding: 1.5rem;
+  }
+  
+  canvas {
+    max-height: 300px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      margin: 1rem auto;
+    }
+    
+    .application-form form {
+      grid-template-columns: 1fr;
+    }
+    
+    table {
+      display: block;
+      overflow-x: auto;
+    }
+    
+    .filters {
+      flex-direction: column;
+    }
+  }
+  
+  /* Add some animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .application-form,
+  .applications-list,
+  .visualization {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  /* Add these classes to your JS for status badges */
+  .applications-list .status {
+    font-size: 0; /* Hide text */
+  }
+  
+  .applications-list .status::before {
+    content: attr(data-status);
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 0.35em 0.65em;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 20px;
+  }
+  
+  .applications-list .status[data-status="Applied"]::before {
+    background-color: #e9ecef;
+    color: var(--dark);
+  }
+  
+  .applications-list .status[data-status="In Review"]::before {
+    background-color: #cff4fc;
+    color: #055160;
+  }
+  
+  .applications-list .status[data-status="Interview"]::before {
+    background-color: #fff3cd;
+    color: #664d03;
+  }
+  
+  .applications-list .status[data-status="Offer"]::before {
+    background-color: #d1e7dd;
+    color: #0f5132;
+  }
+  
+  .applications-list .status[data-status="Rejected"]::before {
+    background-color: #f8d7da;
+    color: #842029;
+  }
